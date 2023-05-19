@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet">
+  <script src="https://vjs.zencdn.net/7.14.3/video.js"></script>
+</head>
+<body>
+  <div id="my-player" class="video-player">
+    <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="https://dev-mx-flix-ofc.pantheonsite.io/wp-content/uploads/2023/05/20230518_194916_0000.png">
+      <source src="https://video.wixstatic.com/video/db47f8_ac8d82436cad484090359727440abe69/720p/mp4/file.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <script>
+    var player = videojs('my-video');
+
+    // Adicionando o botão de pular 10 segundos
+    player.ready(function() {
+      var skipButton = player.controlBar.addChild('button');
+      skipButton.addClass('vjs-skip-button');
+      skipButton.innerHTML = '+10s';
+
+      skipButton.on('click', function() {
+        var currentTime = player.currentTime();
+        player.currentTime(currentTime + 10);
+      });
+    });
+  </script>
+</body>
+</html>
